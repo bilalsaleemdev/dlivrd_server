@@ -25,7 +25,9 @@ class LoginController extends Controller
             ]);
         }
 
-        return $user->createToken($request->device_name)->plainTextToken;
+        return jsonSuccessResponse(true,200,[
+            'token' => $user->createToken($request->device_name)->plainTextToken
+        ]);
     }
 
     public function register(Request $request)
